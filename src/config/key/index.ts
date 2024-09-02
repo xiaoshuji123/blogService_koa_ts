@@ -13,8 +13,6 @@ export const generateKey = () => {
     privateKeyEncoding: {
       type: 'pkcs8', // 私钥编码格式
       format: 'pem', // 私钥输出格式
-      cipher: 'aes-256-cbc', // 加密算法，可选
-      passphrase: 'myPassphrase', // 加密密码，可选
     },
   });
   fs.writeFileSync(path.join(__dirname, 'public.key'), publicKey);
