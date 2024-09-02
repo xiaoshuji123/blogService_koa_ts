@@ -14,7 +14,7 @@
 
 在 tsconfig.json 中修改 `baseUrl` 和 `paths` 参数
 
-```tsconfig.json
+```json
 {
   "compilerOptions": {
     ...
@@ -29,23 +29,29 @@
 
 在 node 中有个问题，就是 ts-node 无法识别这个定义的别名 src，解决办法: 引入 module-alias，在主程序入口的最前面注册一下
 参考：https://levelup.gitconnected.com/path-aliases-with-typescript-in-node-js-230803e3f200
+main.ts
 
-```main.ts
+```ts
 import moduleAlias from 'module-alias/register'; // 支持路径别名
 ...
 ```
 
-```package.json
-...
-"_moduleAliases": {
-    "src": "src"
-  },
-...
+配置一下 package.json
+
+```json
+{
+  ...
+  "_moduleAliases": {
+      "src": "src"
+    },
+  ...
+}
 ```
 
 如果不想更改 package.json 文件的话，可以在代码中手动注册
+main.ts
 
-```main.ts
+```ts
 import moduleAlias from 'module-alias'; // 支持路径别名
 moduleAlias.addAlias('src', __dirname); // 编程的方式注册别名
 ...
