@@ -29,7 +29,8 @@
 
 在 node 中有个问题，就是 ts-node 无法识别这个定义的别名 src，解决办法: 引入 module-alias，在主程序入口的最前面注册一下
 参考：https://levelup.gitconnected.com/path-aliases-with-typescript-in-node-js-230803e3f200
-main.ts
+
+#### main.ts
 
 ```ts
 import moduleAlias from 'module-alias/register'; // 支持路径别名
