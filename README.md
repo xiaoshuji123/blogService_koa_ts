@@ -57,3 +57,33 @@ import moduleAlias from 'module-alias'; // 支持路径别名
 moduleAlias.addAlias('src', __dirname); // 编程的方式注册别名
 ...
 ```
+
+### 项目目录
+
+项目的入口文件是 main.ts，这里使用了三层架构优化 router 里的代码，把全部的代码写在路由里会造成路由文件代码量过大。
+request(接口发送请求) -> router(匹配路由) -> controller(处理逻辑) -> service(sql请求) -> controller(返回sql请求的结果)
+
+```
+.
+├── main.ts            // 项目入口文件
+├── app                // 项目核心代码
+│   ├── database.ts       // 数据库初始化
+│   ├── index.ts
+├── config              // 配置文件
+│   └── index.ts
+├── controller          // 业务逻辑文件
+│   └── articles
+│   └── comments
+│   └── ...
+└──  middleware         // 中间件文件
+└──  router             // 路由文件
+│   └── articles
+│   └── comments
+│   └── ...
+└──  service             // sql 请求文件
+│   └── articles
+│   └── comments
+│   └── ...
+└──  sql             // sql 语句文件
+└──  utils             // 工具文件
+```
